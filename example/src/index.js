@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
-import EmojiRain from '../../src/index.js';
+import EmojiRain from '../../dist/index.js';
 
 const styles = {
   container: {

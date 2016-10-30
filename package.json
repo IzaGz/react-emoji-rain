@@ -5,8 +5,8 @@
   "description": "☔️✨ A React component that makes it rain emoji.",
   "main": "dist-modules/index.js",
   "scripts": {
-    "build": "babel src --out-dir dist && webpack --colors --progress -p",
-    "start": "webpack --watch",
+    "build": "babel src --out-dir dist",
+    "start": "webpack --watch --progress",
     "precommit": "eslint src",
     "prepublish": "npm run build"
   },
