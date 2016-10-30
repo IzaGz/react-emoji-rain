@@ -1,0 +1,44 @@
+{
+  "name": "react-sidebar",
+  "version": "1.0.0",
+  "author": "Andrei Zvonimir Crnkovic <andrei@infinum.co>",
+  "description": "☔️✨ A React component that makes it rain emoji.",
+  "main": "dist-modules/index.js",
+  "scripts": {
+    "build": "babel src --out-dir dist && webpack --colors --progress -p",
+    "start": "webpack --watch",
+    "precommit": "eslint src",
+    "prepublish": "npm run build"
+  },
+  "keywords": [
+    "component",
+    "react",
+    "react-component",
+    "emoji"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/andreicek/react-emoji-rain.git"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=0.14.0",
+    "react-dom": ">=0.14.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.3.17",
+    "babel-core": "^6.3.26",
+    "babel-eslint": "^5.0.0",
+    "babel-loader": "^6.2.0",
+    "babel-plugin-transform-object-rest-spread": "^6.3.13",
+    "babel-preset-es2015": "^6.0.0",
+    "babel-preset-react": "^6.3.13",
+    "eslint": "<2.3.0",
+    "eslint-config-airbnb": "^2.1.1",
+    "eslint-plugin-react": "^3.13.1",
+    "react": ">=0.14.0",
+    "react-dom": ">=0.14.0",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0"
+  }
+}
