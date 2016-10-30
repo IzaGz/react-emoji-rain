@@ -84,7 +84,7 @@ var EmojiRain = function (_Component) {
           active = _ref$active === undefined ? this.active : _ref$active;
 
       this.active = active;
-      if (active) {
+      if (this.active) {
         this.__start();
       } else {
         this.__stop();

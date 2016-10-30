@@ -47,7 +47,7 @@ class EmojiRain extends Component {
 
   componentWillReceiveProps({active = this.active}) {
     this.active = active;
-    if (active) {
+    if (this.active) {
       this.__start();
     } else {
       this.__stop();
