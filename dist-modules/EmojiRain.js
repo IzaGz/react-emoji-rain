@@ -66,7 +66,7 @@ var EmojiRain = function (_Component) {
       this.canvas = canvas;
       this.drops = drops;
       this.active = active;
-      this.context = this.canvas.getContext('2d');
+      var context = this.canvas.getContext('2d');
       this.context.fillStyle = 'black';
 
       window.addEventListener('resize', this.__resizeCanvas.bind(this));
@@ -104,10 +104,11 @@ var EmojiRain = function (_Component) {
   }, {
     key: '__stop',
     value: function __stop() {
+      var context = this.canvas.getContext('2d');
       this.active = false;
       clearTimeout(this.timeout);
       window.cancelAnimationFrame(this.animationFrame);
-      this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
   }, {
     key: '__start',
@@ -121,8 +122,9 @@ var EmojiRain = function (_Component) {
       var _this2 = this;
 
       this.timeout = setTimeout(function () {
+        var context = _this2.canvas.getContext('2d');
         _this2.animationFrame = window.requestAnimationFrame(_this2.__animate.bind(_this2));
-        _this2.context.clearRect(0, 0, _this2.canvas.width, _this2.canvas.height);
+        context.clearRect(0, 0, _this2.canvas.width, _this2.canvas.height);
 
         for (var i = 0; i < _this2.dropsForDrawing.length; i++) {
           _this2.__paintEmoji(_this2.dropsForDrawing[i]);
@@ -132,6 +134,7 @@ var EmojiRain = function (_Component) {
   }, {
     key: '__paintEmoji',
     value: function __paintEmoji(opts) {
+      var context = this.canvas.getContext('2d');
       var emoji = opts;
       if (emoji.y >= this.canvas.height || emoji.opacity < 0.1) {
         var i = emoji.arrayIndex;
@@ -143,18 +146,18 @@ var EmojiRain = function (_Component) {
         emoji.opacity -= emoji.opacitySpeed;
       }
 
-      this.context.globalAlpha = emoji.opacity;
+      context.globalAlpha = emoji.opacity;
 
       var isEven = emoji.arrayIndex % 2;
       if (this.useTwemoji && emoji.img && emoji.img !== '') {
         var size = isEven ? 20 : 30;
-        this.context.drawImage(emoji.img, emoji.x, emoji.y, size, size);
+        context.drawImage(emoji.img, emoji.x, emoji.y, size, size);
       } else {
-        this.context.font = isEven ? '20px serif' : '30px serif';
-        this.context.fillText(emoji.char, emoji.x, emoji.y);
+        context.font = isEven ? '20px serif' : '30px serif';
+        context.fillText(emoji.char, emoji.x, emoji.y);
       }
 
-      this.context.restore();
+      context.restore();
     }
   }, {
     key: '__generateDrops',
