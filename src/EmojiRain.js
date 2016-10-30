@@ -33,7 +33,7 @@ class EmojiRain extends Component {
     this.canvas = canvas;
     this.drops = drops;
     this.active = active;
-    this.context = this.canvas.getContext('2d');
+    const context = this.canvas.getContext('2d');
     this.context.fillStyle = 'black';
 
     window.addEventListener('resize', this.__resizeCanvas.bind(this));
@@ -64,10 +64,11 @@ class EmojiRain extends Component {
   }
 
   __stop() {
+    const context = this.canvas.getContext('2d');
     this.active = false;
     clearTimeout(this.timeout);
     window.cancelAnimationFrame(this.animationFrame);
-    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    context.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
   __start() {
@@ -77,8 +78,9 @@ class EmojiRain extends Component {
 
   __animate() {
     this.timeout = setTimeout(() => {
+      const context = this.canvas.getContext('2d');
       this.animationFrame = window.requestAnimationFrame(this.__animate.bind(this));
-      this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
       for (let i = 0; i < this.dropsForDrawing.length; i++) {
         this.__paintEmoji(this.dropsForDrawing[i]);
@@ -87,6 +89,7 @@ class EmojiRain extends Component {
   }
 
   __paintEmoji(opts) {
+    const context = this.canvas.getContext('2d');
     let emoji = opts;
     if (emoji.y >= this.canvas.height || emoji.opacity < 0.1) {
       const i = emoji.arrayIndex;
@@ -98,18 +101,18 @@ class EmojiRain extends Component {
       emoji.opacity -= emoji.opacitySpeed;
     }
 
-    this.context.globalAlpha = emoji.opacity;
+    context.globalAlpha = emoji.opacity;
 
     const isEven = emoji.arrayIndex % 2;
     if (this.useTwemoji && emoji.img && emoji.img !== '') {
       const size = isEven ? 20 : 30;
-      this.context.drawImage(emoji.img, emoji.x, emoji.y, size, size);
+      context.drawImage(emoji.img, emoji.x, emoji.y, size, size);
     } else {
-      this.context.font = isEven ? '20px serif' : '30px serif';
-      this.context.fillText(emoji.char, emoji.x, emoji.y);
+      context.font = isEven ? '20px serif' : '30px serif';
+      context.fillText(emoji.char, emoji.x, emoji.y);
     }
 
-    this.context.restore();
+    context.restore();
   }
 
   __generateDrops() {
