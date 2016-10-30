@@ -1,9 +1,9 @@
 {
-  "name": "react-sidebar",
-  "version": "1.0.0",
+  "name": "react-emoji-rain",
+  "version": "1.0.1",
   "author": "Andrei Zvonimir Crnkovic <andrei@infinum.co>",
   "description": "☔️✨ A React component that makes it rain emoji.",
-  "main": "dist-modules/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "babel src --out-dir dist",
     "start": "webpack --watch --progress",
