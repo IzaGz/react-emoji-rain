@@ -1,6 +1,6 @@
 {
   "name": "react-emoji-rain",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Andrei Zvonimir Crnkovic <andrei@infinum.co>",
   "description": "☔️✨ A React component that makes it rain emoji.",
   "main": "dist-modules/index.js",
